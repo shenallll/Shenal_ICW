@@ -4,7 +4,6 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-
 # Page Configuration
 
 st.set_page_config(page_title="Sri Lanka Conflict Dashboard", layout="wide")
@@ -17,7 +16,6 @@ data = pd.read_csv("preprocessed_conflict_data.csv")
 
 
 # Sidebar Filters
-# ----------------------------
 st.sidebar.header("Filter the Data")
 
 # Year filter
@@ -110,6 +108,12 @@ st.write("## Summary Statistics")
 
 st.write("**Total Events:**", filtered_data.shape[0])
 st.write("**Total Deaths (Best Estimate):**", filtered_data["best"].sum())
+
+# Footer
+
+st.write("---")
+st.write("Developed by [Shenal Perera] | Sri Lanka Conflict Data Dashboard | Data Science Project Lifecycle Project")
+
 
 
 
