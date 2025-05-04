@@ -16,3 +16,22 @@ st.write("Explore conflict events, regions, and their impacts across Sri Lanka t
 data = pd.read_csv("preprocessed_conflict_data.csv")
 
 
+if selected_years:
+    filtered_data = filtered_data[filtered_data['year'].isin(selected_years)]
+
+if selected_violence:
+    filtered_data = filtered_data[filtered_data['type_of_violence'].isin(selected_violence)]
+
+if selected_side_a:
+    filtered_data = filtered_data[filtered_data['side_a'].isin(selected_side_a)]
+
+if selected_side_b:
+    filtered_data = filtered_data[filtered_data['side_b'].isin(selected_side_b)]
+
+if selected_regions:
+    filtered_data = filtered_data[filtered_data['adm_1'].isin(selected_regions)]
+
+st.write("### Filtered Data")
+st.dataframe(filtered_data)
+
+
