@@ -16,6 +16,33 @@ st.write("Explore conflict events, regions, and their impacts across Sri Lanka t
 data = pd.read_csv("preprocessed_conflict_data.csv")
 
 
+# Sidebar Filters
+# ----------------------------
+st.sidebar.header("Filter the Data")
+
+# Year filter
+years = data['year'].unique()
+selected_years = st.sidebar.multiselect("Select Year", sorted(years))
+
+# Type of Violence filter
+violence_types = data['type_of_violence'].unique()
+selected_violence = st.sidebar.multiselect("Select Type of Violence", sorted(violence_types))
+
+# Side A filter
+side_a = data['side_a'].unique()
+selected_side_a = st.sidebar.multiselect("Select Side A", sorted(side_a))
+
+# Side B filter
+side_b = data['side_b'].unique()
+selected_side_b = st.sidebar.multiselect("Select Side B", sorted(side_b))
+
+# Region filter
+regions = data['adm_1'].unique()
+selected_regions = st.sidebar.multiselect("Select Region", sorted(regions))
+
+# Apply filters
+filtered_data = data.copy()
+
 if selected_years:
     filtered_data = filtered_data[filtered_data['year'].isin(selected_years)]
 
@@ -79,12 +106,11 @@ fig = px.line(events_over_time, x="date_start", y="Event Count", title="Events o
 st.plotly_chart(fig)
 
 # Summary Statistics
-# ----------------------------
-
-st.write("## 📊 Summary Statistics")
+st.write("## Summary Statistics")
 
 st.write("**Total Events:**", filtered_data.shape[0])
 st.write("**Total Deaths (Best Estimate):**", filtered_data["best"].sum())
+
 
 
 
