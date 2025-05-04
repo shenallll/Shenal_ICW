@@ -78,5 +78,13 @@ events_over_time = filtered_data.groupby("date_start").size().reset_index(name='
 fig = px.line(events_over_time, x="date_start", y="Event Count", title="Events over Time")
 st.plotly_chart(fig)
 
+# Summary Statistics
+# ----------------------------
+
+st.write("## 📊 Summary Statistics")
+
+st.write("**Total Events:**", filtered_data.shape[0])
+st.write("**Total Deaths (Best Estimate):**", filtered_data["best"].sum())
+
 
 
